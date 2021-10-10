@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class TopicDetail extends StatefulWidget {
+class TopicLess extends StatefulWidget {
   @override
-  _TopicDetailState createState() => _TopicDetailState();
+  _TopicLessState createState() => _TopicLessState();
 }
 
-class _TopicDetailState extends State<TopicDetail> {
+class _TopicLessState extends State<TopicLess> {
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
@@ -95,14 +95,14 @@ class _TopicDetailState extends State<TopicDetail> {
                           children: [
                             Text(
                               "Lessons",
-                              style: yellowsubtopic,
+                              style: greysubtopic,
                             ),
                             SizedBox(
                               width: 20,
                             ),
                             Text(
                               "Quizzes",
-                              style: greysubtopic,
+                              style: yellowsubtopic,
                             ),
                           ],
                         )
@@ -112,19 +112,19 @@ class _TopicDetailState extends State<TopicDetail> {
                 ),
                 Column(
                   children: [
-                    Container(height: 80, child: CardListLessons()),
+                    Container(height: 85, child: CardQuizz()),
                     SizedBox(
                       width: 20,
                     ),
-                    Container(height: 80, child: CardListLessons()),
+                    Container(height: 80, child: CardQuizz()),
                     SizedBox(
                       width: 20,
                     ),
-                    Container(height: 80, child: CardListLessons()),
+                    Container(height: 80, child: CardQuizz()),
                     SizedBox(
                       width: 20,
                     ),
-                    Container(height: 80, child: CardListLessons()),
+                    Container(height: 80, child: CardQuizz()),
                   ],
                 )
               ],
@@ -136,8 +136,8 @@ class _TopicDetailState extends State<TopicDetail> {
   }
 }
 
-class CardListLessons extends StatelessWidget {
-  const CardListLessons({
+class CardQuizz extends StatelessWidget {
+  const CardQuizz({
     Key key,
   }) : super(key: key);
 
@@ -159,10 +159,45 @@ class CardListLessons extends StatelessWidget {
             width: 20,
           ),
           Container(
-            width: 250,
-            child: Text(
-              "1. Introduction to Grammar 101",
-              style: fonttitlecard,
+            margin: EdgeInsets.only(top: 15),
+            child: Column(
+              children: [
+                Container(
+                  width: 100,
+                  child: Text(
+                    "Quiz 1",
+                    style: fonttitlecard,
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  child: Text(
+                    "8 min",
+                    style: yellowfontnormal,
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  child: Text(
+                    "Multiple choice",
+                    style: greyfontnormal,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            constraints: BoxConstraints(minWidth: 150, maxWidth: 200),
+            margin: EdgeInsets.only(top: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "80pts",
+                  style: yellowachieve,
+                )
+              ],
             ),
           ),
         ],

@@ -32,7 +32,7 @@ class GeneralPage extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: defaultMargin),
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                       width: double.infinity,
-                      height: 150,
+                      height: 70,
                       color: maincolor,
                       child: Row(
                         children: [
@@ -47,18 +47,21 @@ class GeneralPage extends StatelessWidget {
                                               'assets/back_arrow_white.png'))),
                                 )
                               : SizedBox(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                title,
-                                style: GoogleFonts.inter(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ],
+                          Container(
+                            margin: EdgeInsets.only(top: 40),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  title,
+                                  style: GoogleFonts.inter(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
