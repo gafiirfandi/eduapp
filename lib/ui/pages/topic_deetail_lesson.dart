@@ -136,73 +136,73 @@ class _TopicLessState extends State<TopicLess> {
   }
 }
 
-class CardQuizz extends StatelessWidget {
-  const CardQuizz({
-    Key key,
-  }) : super(key: key);
+// class CardQuizz extends StatelessWidget {
+//   const CardQuizz({
+//     Key key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            width: 34,
-            height: 34,
-            margin: EdgeInsets.only(left: 26),
-            decoration: BoxDecoration(
-                image:
-                    DecorationImage(image: AssetImage('assets/btn_play.png'))),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 15),
-            child: Column(
-              children: [
-                Container(
-                  width: 100,
-                  child: Text(
-                    "Quiz 1",
-                    style: fonttitlecard,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: Text(
-                    "8 min",
-                    style: yellowfontnormal,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: Text(
-                    "Multiple choice",
-                    style: greyfontnormal,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            constraints: BoxConstraints(minWidth: 150, maxWidth: 200),
-            margin: EdgeInsets.only(top: 15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "80pts",
-                  style: yellowachieve,
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-      elevation: 3,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.start,
+//         children: [
+//           Container(
+//             width: 34,
+//             height: 34,
+//             margin: EdgeInsets.only(left: 26),
+//             decoration: BoxDecoration(
+//                 image:
+//                     DecorationImage(image: AssetImage('assets/btn_play.png'))),
+//           ),
+//           SizedBox(
+//             width: 20,
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(top: 15),
+//             child: Column(
+//               children: [
+//                 Container(
+//                   width: 100,
+//                   child: Text(
+//                     "Quiz 1",
+//                     style: fonttitlecard,
+//                   ),
+//                 ),
+//                 Container(
+//                   width: 100,
+//                   child: Text(
+//                     "8 min",
+//                     style: yellowfontnormal,
+//                   ),
+//                 ),
+//                 Container(
+//                   width: 100,
+//                   child: Text(
+//                     "Multiple choice",
+//                     style: greyfontnormal,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Container(
+//             constraints: BoxConstraints(minWidth: 150, maxWidth: 200),
+//             margin: EdgeInsets.only(top: 15),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               crossAxisAlignment: CrossAxisAlignment.end,
+//               children: [
+//                 Text(
+//                   "80pts",
+//                   style: yellowachieve,
+//                 )
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//       elevation: 3,
+//     );
+//   }
+// }

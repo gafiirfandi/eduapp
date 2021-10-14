@@ -1,11 +1,54 @@
 part of 'pages.dart';
 
-class TopicDetail extends StatefulWidget {
+class TopicDetailDummy extends StatefulWidget {
   @override
-  _TopicDetailState createState() => _TopicDetailState();
+  _TopicDetailDummyState createState() => _TopicDetailDummyState();
 }
 
-class _TopicDetailState extends State<TopicDetail> {
+class _TopicDetailDummyState extends State<TopicDetailDummy> {
+  int _currentSelection = 1;
+  double _selectorPositonX = 16.0;
+
+  //need key
+  GlobalKey _key1 = GlobalKey();
+  GlobalKey _key2 = GlobalKey();
+
+  _selectedItem(int id) {
+    _currentSelection = id;
+    //setup key
+    GlobalKey selectedGlobalKey;
+
+    switch (id) {
+      case 1:
+        selectedGlobalKey = _key1;
+        break;
+      case 2:
+        selectedGlobalKey = _key2;
+        break;
+      default:
+    }
+
+    //need function
+
+    setState(() {});
+  }
+
+  _setWidgetPositionX(GlobalKey selectedKey) {
+    final RenderBox widgetRenderBox =
+        selectedKey.currentContext.findRenderObject();
+    final widgetPositon = widgetRenderBox.localToGlobal(Offset.zero);
+
+    //need variables
+    _selectorPositonX = widgetPositon.dx;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => _setWidgetPositionX(_key1));
+  }
+
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
@@ -90,19 +133,53 @@ class _TopicDetailState extends State<TopicDetail> {
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Stack(
                           children: [
-                            Text(
-                              "Lessons",
-                              style: yellowsubtopic,
+                            Container(
+                              margin: const EdgeInsets.only(
+                                  left: 16.0, bottom: 12.0),
+                              child: Row(
+                                // mainAxisAlignment:
+                                //     MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(
+                                    key: _key1,
+                                    onTap: () => _selectedItem(1),
+                                    child: Text(
+                                      "Lessons",
+                                      style: _currentSelection == 1
+                                          ? greysubtopic
+                                          : yellowsubtopic,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  InkWell(
+                                    key: _key2,
+                                    onTap: () => _selectedItem(2),
+                                    child: Text(
+                                      "Quizzes",
+                                      style: _currentSelection == 2
+                                          ? greysubtopic
+                                          : yellowsubtopic,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              "Quizzes",
-                              style: greysubtopic,
+                            AnimatedPositioned(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.fastOutSlowIn,
+                              left: _selectorPositonX,
+                              bottom: 5.0,
+                              child: Container(
+                                width: 30.0,
+                                height: 4.0,
+                                decoration: ShapeDecoration(
+                                    shape: StadiumBorder(),
+                                    color: Colors.orange[200]),
+                              ),
                             ),
                           ],
                         )
@@ -110,23 +187,6 @@ class _TopicDetailState extends State<TopicDetail> {
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                  ],
-                )
               ],
             ),
           ),
@@ -135,39 +195,3 @@ class _TopicDetailState extends State<TopicDetail> {
     );
   }
 }
-
-// class CardListLessons extends StatelessWidget {
-//   const CardListLessons({
-//     Key key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.start,
-//         children: [
-//           Container(
-//             width: 34,
-//             height: 34,
-//             margin: EdgeInsets.only(left: 26),
-//             decoration: BoxDecoration(
-//                 image:
-//                     DecorationImage(image: AssetImage('assets/btn_play.png'))),
-//           ),
-//           SizedBox(
-//             width: 20,
-//           ),
-//           Container(
-//             width: 250,
-//             child: Text(
-//               "1. Introduction to Grammar 101",
-//               style: fonttitlecard,
-//             ),
-//           ),
-//         ],
-//       ),
-//       elevation: 3,
-//     );
-//   }
-// }

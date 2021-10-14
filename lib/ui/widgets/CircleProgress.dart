@@ -1,7 +1,5 @@
-import 'dart:math';
+part of 'widgets.dart';
 
-import 'package:flutter/material.dart';
-import 'package:educationapp/shared/shared.dart';
 
 class CircleProgress extends CustomPainter {
   final strokeCircle = 13.0;

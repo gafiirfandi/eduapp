@@ -1,15 +1,17 @@
 part of 'pages.dart';
 
-class TopicDetail extends StatefulWidget {
+class TopicDetailDua extends StatefulWidget {
   @override
-  _TopicDetailState createState() => _TopicDetailState();
+  _TopicDetailDuaState createState() => _TopicDetailDuaState();
 }
 
-class _TopicDetailState extends State<TopicDetail> {
+class _TopicDetailDuaState extends State<TopicDetailDua> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
-      title: 'Topic Detail',
+      title: 'Topic Detail ',
       onBackButtonPressed: () {},
       backColor: maincolor,
       child: Column(
@@ -90,43 +92,66 @@ class _TopicDetailState extends State<TopicDetail> {
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Lessons",
-                              style: yellowsubtopic,
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              "Quizzes",
-                              style: greysubtopic,
-                            ),
-                          ],
-                        )
                       ],
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(height: 80, child: CardListLessons()),
-                  ],
-                )
+                // List Education
+                Container(
+                  width: double.infinity,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      CustomTabBar(
+                        titles: ['Lessons', 'Quizzes'],
+                        selectedIndex: selectedIndex,
+                        onTap: (index) {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Builder(builder: (_) {
+                        List<Lessons> listlessons =
+                            (selectedIndex == 0) ? mockLessons : [];
+
+                        return Column(
+                          children: listlessons
+                              .map(
+                                (e) => Container(
+                                  height: 80,
+                                  child: CardListLessons(
+                                    lessons: e,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        );
+                      }),
+                      Builder(builder: (_) {
+                        List<Quizz> listquizz =
+                            (selectedIndex == 1) ? mockQuizz : [];
+
+                        return Column(
+                          children: listquizz
+                              .map(
+                                (e) => Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  height: 80,
+                                  child: CardQuizz(
+                                    quiz: e,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -135,39 +160,3 @@ class _TopicDetailState extends State<TopicDetail> {
     );
   }
 }
-
-// class CardListLessons extends StatelessWidget {
-//   const CardListLessons({
-//     Key key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.start,
-//         children: [
-//           Container(
-//             width: 34,
-//             height: 34,
-//             margin: EdgeInsets.only(left: 26),
-//             decoration: BoxDecoration(
-//                 image:
-//                     DecorationImage(image: AssetImage('assets/btn_play.png'))),
-//           ),
-//           SizedBox(
-//             width: 20,
-//           ),
-//           Container(
-//             width: 250,
-//             child: Text(
-//               "1. Introduction to Grammar 101",
-//               style: fonttitlecard,
-//             ),
-//           ),
-//         ],
-//       ),
-//       elevation: 3,
-//     );
-//   }
-// }
